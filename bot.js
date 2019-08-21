@@ -379,7 +379,15 @@ message.channel.send(`  **${message.author} تم رفض عرضك** `);
 });
 
 
-
+bot.on('message' , message => {
+  var prefix = "$";
+  if(message.author.bot) return;
+  if(message.content.startsWith(prefix + "tag")) {
+ message.channel.send('> Friends Tag in io Games ...').then((msg) => {
+      msg.edit(`\`\`\`The Tag is : 〖友〗  \`\`\``);
+ })
+  }  
+ });
 
 
 bot.on('message' , message => {
