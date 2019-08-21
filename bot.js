@@ -1,6 +1,8 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
-
+const ytScraper = require("yt-scraper"); // npm i yt-scraper
+const developers = "552322709292580875";
+const prefix = "$";
 
 
 
@@ -28,46 +30,43 @@ bot.on("message", message => {
 });
 
 
-const developers = "552322709292580875";
-const adminprefix = "$";
-bot.on('message', message => {
+
+bot.on('message', message => { // State
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
       
-  if (message.content.startsWith(adminprefix + 'play')) {
+  if (message.content.startsWith(prefix + 'play')) {
     bot.user.setGame(argresult);
       message.channel.send("**:white_check_mark: | The Playing Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
   } else 
-  if (message.content.startsWith(adminprefix + 'wat')) {
+  if (message.content.startsWith(prefix + 'wat')) {
   bot.user.setActivity(argresult, {type:'WATCHING'});
       message.channel.send("**:white_check_mark: | The Watching Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
   } else 
-  if (message.content.startsWith(adminprefix + 'lis')) {
+  if (message.content.startsWith(prefix + 'lis')) {
   bot.user.setActivity(argresult , {type:'LISTENING'});
       message.channel.send("**:white_check_mark: | The Listening Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
   } else 
-  if (message.content.startsWith(adminprefix + 'st')) {
+  if (message.content.startsWith(prefix + 'st')) {
     bot.user.setGame(argresult, "https://www.twitch.tv/7eezi");
       message.channel.send("**:white_check_mark: | The Streaming Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
   }
-  if (message.content.startsWith(adminprefix + 'name')) {
+  if (message.content.startsWith(prefix + 'name')) {
   bot.user.setUsername(argresult).then
       message.channel.send(`Changing The Name To ..**${argresult}** `)
 } else
-if (message.content.startsWith(adminprefix + 'avatar')) {
+if (message.content.startsWith(prefix + 'avatar')) {
   bot.user.setAvatar(argresult);
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
 });
 
 
-
-
-var config = {
+var config = { // log
   events: [
     {type: "CHANNEL_CREATE", logType: "CHANNEL_CREATE", limit: 4 , delay: 5000},
     {type: "CHANNEL_DELETE", logType: "CHANNEL_DELETE", limit: 4, delay: 5000},
@@ -124,9 +123,6 @@ bot.on("reachLimit", (limit)=> {
 });
 
 
-
-
-
 bot.on('guildMemberAdd', member => {
   message.channel.send(`
   > Welcome To Friends Server :
@@ -136,9 +132,6 @@ bot.on('guildMemberAdd', member => {
   `
   )
 })
-
-
-
 
 
 bot.on('message', msg => {
@@ -162,8 +155,6 @@ bot.on('message', msg => {
    
    }
    });
-
-
 
 
    bot.on("message", message => {
@@ -195,7 +186,6 @@ bot.on('message', msg => {
          .setDescription(`** Members Commands | أوامر الأعضاء
 
          $ping | لمعرفة سرعة البنق عندك
-         $tag  | التاق حق العاب اقاريو
          $yt   | لمعرفة معلومات قنوات اليوتيوب
 
          **`)
@@ -204,9 +194,8 @@ bot.on('message', msg => {
     }
    });
 
-
    
-   bot.on("message", message => {
+   bot.on("message", message => { 
     if (message.content === "$help game") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
@@ -221,28 +210,23 @@ bot.on('message', msg => {
    });
 
 
-
-
-   bot.on('messageReactionAdd', (reaction) => {
+   bot.on('messageReactionAdd', (reaction) => { // Reaction new
     const embed = new Discord.RichEmbed()
     .setTitle(`New Reaction`)
     .setDescription(`**Reaction Message:-** ${reaction.message.content} \n **Reaction Emoji:-** ${reaction.emoji} \n **Reaction Message ID:-** ${reaction.message.id} \n **Reaction Message Channel:-** ${reaction.message.channel.name} \n **Reactions Count:-** ${reaction.count}`)
    bot.channels.get('CHANNEL ID').send({embed : embed}).catch(e => console.log(e))
   })
+
   
-  
-  
-  
-  bot.on('messageReactionRemove', (reaction) => {
+  bot.on('messageReactionRemove', (reaction) => { // Reaction Removed
     const embed = new Discord.RichEmbed()
     .setTitle(`Reaction Removed`)
     .setDescription(`**Reaction Message:-** ${reaction.message.content} \n **Reaction Emoji:-** ${reaction.emoji} \n **Reaction Message ID:-** ${reaction.message.id} \n **Reaction Message Channel:-** ${reaction.message.channel.name} \n **Reactions Count:-** ${reaction.count}`)
     bot.channels.get('CHANNEL ID').send({embed : embed}).catch(e => console.log(e))
   })
 
-
    
-   bot.on("message", message => {
+   bot.on("message", message => { // obc
     if (message.content.startsWith("$obc")) {
                  if (!message.member.hasPermission("ADMINISTRATOR"))  return;
   let args = message.content.split(" ").slice(1);
@@ -254,14 +238,9 @@ bot.on('message', msg => {
   message.delete();
   };
   });
+ 
 
-
-
-
-  var prefix = "$";
-
-  bot.on("message", message => {
-  
+  bot.on("message", message => { // bc
               if (message.content.startsWith(prefix + "bc")) {
                            if (!message.member.hasPermission("ADMINISTRATOR"))  return;
     let args = message.content.split(" ").slice(1);
@@ -275,11 +254,7 @@ bot.on('message', msg => {
   });
 
 
-
-
-
-   bot.on('message', function(msg) {
-    var prefix = '$';
+   bot.on('message', function(msg) { // server
   if(msg.content.startsWith (prefix  + 'server')) {
    let embed = new Discord.RichEmbed()
    .setColor('RANDOM')
@@ -299,16 +274,7 @@ bot.on('message', msg => {
   });
 
 
-
-  
-
-  
-
-
-
-
-bot.on('message', message =>{
-    var prefix ='$';
+bot.on('message', message =>{ // unban
     let command = message.content.split(" ")[0];
     if (command == prefix + "unban") {
     if(!message.member.hasPermission('BAN_MEMBERS')) return;
@@ -321,12 +287,8 @@ bot.on('message', message =>{
     }).catch(stry =>{message.channel.send(`> **🙄 - I can't find \`${args}\` in the ban list.**`)});
     }});
      
-
-
-
-    const ytScraper = require("yt-scraper"); // npm i yt-scraper
-bot.on('message', message => {
-  var prefix ='$';
+   
+bot.on('message', message => { // Youtube
     if (message.content.startsWith(prefix + 'yt')) {
       let args = message.content.split(" ").slice(1).join(" ");
       if(!args) return message.channel.send(`> :rolling_eyes: **please type the channel link.**`)
@@ -350,9 +312,8 @@ bot.on('message', message => {
 });
 
 
-
-bot.on('message', message => {
-  if(message.content.startsWith ("$marry")) {
+bot.on('message', message => { // marry
+  if(message.content.startsWith (prefix + 'marry')) {
   if(!message.channel.guild) return message.reply('> ** This command only for servers .**')
   var proposed = message.mentions.members.first()
  
@@ -380,30 +341,28 @@ message.channel.send(`  **${message.author} تم رفض عرضك** `);
 });
 
 
-bot.on('message' , message => {
-  var prefix = "$";
+bot.on('message' , message => { // tag
   if(message.author.bot) return;
   if(message.content.startsWith(prefix + "tag")) {
  message.channel.send('> Friends Tag in io Games ...').then((msg) => {
-      msg.edit(`\`\`\`The Tag is : 〖友〗  \`\`\``);
+      msg.edit(`\`\`\` 〖友〗  \`\`\``);
  })
   }  
  });
 
 
-bot.on('message' , message => {
-    var prefix = "$";
+bot.on('message' , message => { // ping
     if(message.author.bot) return;
     if(message.content.startsWith(prefix + "ping")) {
    message.channel.send('Pong...').then((msg) => {
-        msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(bot.ping)} ms.\`\`\``);//حقوق دايموند كودز
+        msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(bot.ping)} ms.\`\`\``);
    })
     }  
    });
 
 
-   bot.on('message', message => {
-    if (message.content.startsWith('$kick')) {
+   bot.on('message', message => { // kick
+    if (message.content.startsWith(prefix + 'kick')) {
       const member = message.mentions.members.first()
   
       if (!member) {
@@ -424,10 +383,7 @@ bot.on('message' , message => {
   })
 
 
-
-
-  bot.on('message',message =>{
-    var prefix ='$';
+  bot.on('message',message =>{ // nick
     let command = message.content.split(" ")[0];
     if (command == prefix + "nick") {
     if(!message.member.hasPermission('MANAGE_NICKNAMES')) return message.channel.send(`> You Don't has premisson.`)
@@ -444,14 +400,7 @@ bot.on('message' , message => {
     message.channel.send(`> ✅ Done changed ${user} nickname to **\`${MrNono}\`**.`);}});
 
 
-
-
-
-
-
-
-bot.on('message', message => {
-    var prefix = '$'; 
+bot.on('message', message => { // ban
   if(message.content.split(' ')[0] == `${prefix}ban`){
   if(!message.guild || message.author.bot) return undefined;
       if(!message.member.hasPermission('BAN_MEMBERS')) return message.channel.send('> **You don\'t have permission.**');
@@ -472,39 +421,33 @@ bot.on('message', message => {
 });
 
 
-
-
-
-
-
-bot.on('message', message => {///////Abdellhadi
-  const prefix = '$'
-      if(message.content === prefix + 'cColor') {///////Abdellhadi
+bot.on('message', message => { // creat color
+      if(message.content === prefix + 'cColor') {
                            if(!message.channel.guild) return message.channel.send('> **This Command only For Servers !.**'); 
               
            if(!message.member.hasPermission('ADMINISTRATOR')) return    message.channel.send('> **You Dont Have** `ADMINISTRATOR` **premission.**').then(msg => msg.delete(6000))
         message.guild.createRole({
                     name: "1",
-                      color: "#FFB6C1",///////Abdellhadi
+                      color: "#FFB6C1",
                       permissions: []
        })
              message.guild.createRole({
                     name: "2",
                       color: "#FFC0CB",
                       permissions: []
-       })///////Abdellhadi
+       })
                   message.guild.createRole({
                     name: "3",
-                      color: "#FF69B4",///////Abdellhadi
-                      permissions: []
-       })///////Abdellhadi
-                       message.guild.createRole({
-                    name: "4",
-                      color: "#FF1493",///////Abdellhadi
+                      color: "#FF69B4",
                       permissions: []
        })
                        message.guild.createRole({
-                    name: "5",///////Abdellhadi
+                    name: "4",
+                      color: "#FF1493",
+                      permissions: []
+       })
+                       message.guild.createRole({
+                    name: "5",
                       color: "#DB7093",
                       permissions: []
        })
@@ -514,18 +457,18 @@ bot.on('message', message => {///////Abdellhadi
                       permissions: []
        })
                        message.guild.createRole({
-                    name: "7",///////Abdellhadi
+                    name: "7",
                       color: "#E6E6FA",
                       permissions: []
        })
                        message.guild.createRole({
                     name: "8",
-                      color: "#D8BFD8",///////Abdellhadi
+                      color: "#D8BFD8",
                       permissions: []
        })
                        message.guild.createRole({
                     name: "8",
-                      color: "#DDA0DD",///////Abdellhadi
+                      color: "#DDA0DD",
                       permissions: []
        })
                        message.guild.createRole({
@@ -534,43 +477,43 @@ bot.on('message', message => {///////Abdellhadi
                       permissions: []
        })
                        message.guild.createRole({
-                    name: "10",///////Abdellhadi
+                    name: "10",
                       color: "#EE82EE",
                       permissions: []
        })
                        message.guild.createRole({
                     name: "11",
-                      color: "#FF00FF",///////Abdellhadi
+                      color: "#FF00FF",
                       permissions: []
        })
-                       message.guild.createRole({///////Abdellhadi
+                       message.guild.createRole({
                     name: "12",
                       color: "#BA55D3",
-                      permissions: []///////Abdellhadi
+                      permissions: []
        })
-                       message.guild.createRole({///////Abdellhadi
+                       message.guild.createRole({
                     name: "13",
                       color: "#9932CC",
-                      permissions: []///////Abdellhadi
+                      permissions: []
        })
                             message.guild.createRole({
                     name: "14",
-                      color: "#9400D3",///////Abdellhadi
+                      color: "#9400D3",
                       permissions: []
        })
                             message.guild.createRole({
                     name: "15",
                       color: "#8A2BE2",
-                      permissions: []///////Abdellhadi
+                      permissions: []
        })
                                  message.guild.createRole({
-                    name: "16",///////Abdellhadi
+                    name: "16",
                       color: "#8B008B",
                       permissions: []
-       })///////Abdellhadi
+       })
                                       message.guild.createRole({
                     name: "17",
-                      color: "#800080",///////Abdellhadi
+                      color: "#800080",
                       permissions: []
        })
                                       message.guild.createRole({
@@ -579,7 +522,7 @@ bot.on('message', message => {///////Abdellhadi
                       permissions: []
        })
                                       message.guild.createRole({
-                    name: "19",///////Abdellhadi
+                    name: "19",
                       color: "#7B68EE",
                       permissions: []
        })
@@ -622,7 +565,7 @@ bot.on('message', message => {///////Abdellhadi
                     name: "27",
                       color: "#F08080",
                       permissions: []
-       })///////Abdellhadi
+       })
                                       message.guild.createRole({
                     name: "28",
                       color: "#CD5C5C",
@@ -637,7 +580,7 @@ bot.on('message', message => {///////Abdellhadi
                     name: "30",
                       color: "	#FF0000",
                       permissions: []
-       })///////Abdellhadi
+       })
                                            message.guild.createRole({
                     name: "31",
                       color: "#B22222",
@@ -652,26 +595,26 @@ bot.on('message', message => {///////Abdellhadi
                     name: "33",
                       color: "#FFA500",
                       permissions: []
-       })///////Abdellhadi
+       })
                                            message.guild.createRole({
                     name: "34",
                       color: "#FF8C00",
                       permissions: []
        })
-                                           message.guild.createRole({///////Abdellhadi
+                                           message.guild.createRole({
                     name: "35",
                       color: "#FF7F50",
-                      permissions: []///////Abdellhadi
-       })
-                                           message.guild.createRole({///////Abdellhadi
-                    name: "36",
-                      color: "#FF6347",///////Abdellhadi
                       permissions: []
        })
-                                           message.guild.createRole({///////Abdellhadi
+                                           message.guild.createRole({
+                    name: "36",
+                      color: "#FF6347",
+                      permissions: []
+       })
+                                           message.guild.createRole({
                     name: "37",
                       color: "#FF4500",
-                      permissions: []///////Abdellhadi
+                      permissions: []
        })
                                            message.guild.createRole({
                     name: "38",
@@ -1182,14 +1125,5 @@ bot.on('message', message => {///////Abdellhadi
     });
 
 
-
-
-
-
-
-
-
-
-
-
+    
 bot.login(process.env.TOKEN);
