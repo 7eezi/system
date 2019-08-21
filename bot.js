@@ -381,6 +381,7 @@ message.channel.send(`  **${message.author} تم رفض عرضك** `);
 
 
 
+
 bot.on('message' , message => {
     var prefix = "$";
     if(message.author.bot) return;
