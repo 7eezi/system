@@ -195,6 +195,7 @@ bot.on('message', msg => {
          .setDescription(`** Members Commands | أوامر الأعضاء
 
          $ping | لمعرفة سرعة البنق عندك
+         $tag  | التاق حق العاب اقاريو
          $yt   | لمعرفة معلومات قنوات اليوتيوب
 
          **`)
