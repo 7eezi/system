@@ -35,7 +35,7 @@ bot.on('message', message => { // State
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
       
-  if (message.content.startsWith(prefix + 'play')) {
+  if (message.content.startsWith(prefix + 'ply')) {
     bot.user.setGame(argresult);
       message.channel.send("**:white_check_mark: | The Playing Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
@@ -55,11 +55,11 @@ bot.on('message', message => { // State
       message.channel.send("**:white_check_mark: | The Streaming Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
   }
-  if (message.content.startsWith(prefix + 'name')) {
+  if (message.content.startsWith(prefix + 'nm')) {
   bot.user.setUsername(argresult).then
       message.channel.send(`Changing The Name To ..**${argresult}** `)
 } else
-if (message.content.startsWith(prefix + 'avatar')) {
+if (message.content.startsWith(prefix + 'av')) {
   bot.user.setAvatar(argresult);
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
