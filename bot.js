@@ -18,12 +18,6 @@ bot.on('ready', () =>{
 
 
 
-bot.on('ready', () =>{
-  console.log(`Logged in as ${bot.user.tag} !`);
-  console.log(`This Bot is Online`);
-})
-
-
 
 bot.on("message", message => {
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
