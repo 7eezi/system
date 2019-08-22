@@ -165,8 +165,6 @@ bot.on('message', msg => {
          .setDescription(`** Admin Commands | الأوامر الإدارية
 
          $server | لمعرفة معلومات السيرفر
-         $obc    | لإرسال البرودكاست للكل
-         $bc     | لإرسال البرودكاست للأونلاين
          $kick   | الطرد
          $ban    | الباند
          $unban  | فك الباند بالآي دي
@@ -226,32 +224,8 @@ bot.on('message', msg => {
   })
 
    
-   bot.on("message", message => { // obc
-    if (message.content.startsWith("$obc")) {
-                 if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-  let args = message.content.split(" ").slice(1);
-  var argresult = args.join(' ');
-  message.guild.members.filter(m => m.presence.status !== 'all').forEach(m => {
-  m.send(`${argresult}\n ${m}`);
-  })
-  message.channel.send(`\`${message.guild.members.filter( m => m.presence.status !== 'all').size}\`:mailbox:  عدد المستلمين `);
-  message.delete();
-  };
-  });
- 
 
-  bot.on("message", message => { // bc
-              if (message.content.startsWith(prefix + "bc")) {
-                           if (!message.member.hasPermission("ADMINISTRATOR"))  return;
-    let args = message.content.split(" ").slice(1);
-    var argresult = args.join(' '); 
-    message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
-   m.send(`${argresult}\n ${m}`);
-  })
-   message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` :mailbox:  عدد المستلمين `); 
-   message.delete(); 
-  };     
-  });
+
 
 
    bot.on('message', function(msg) { // server
