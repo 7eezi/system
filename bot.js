@@ -1,8 +1,23 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 const bot = new Discord.Client();
 const ytScraper = require("yt-scraper"); // npm i yt-scraper
 const developers = "552322709292580875";
 const prefix = "$";
+
+const token = 'NjE0MTE3OTAwNDcwNDUyMjU1.XV6z_A.tKqiSsiC2SoVkiKJiJvTwdbEo6E';
+
+
+
+bot.on('ready', () =>{
+    console.log(`
+    
+    - This Bot is Online.
+    - Logged in **${bot.user.tag}**.
+    - All Codes Working.
+
+    `)
+})
+
 
 
 
@@ -35,7 +50,7 @@ bot.on('message', message => { // State
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
       
-  if (message.content.startsWith(prefix + 'ply')) {
+  if (message.content.startsWith(prefix + 'play')) {
     bot.user.setGame(argresult);
       message.channel.send("**:white_check_mark: | The Playing Status Has Been Changed To : ``"
    + `${argresult}` + "``**")
@@ -208,6 +223,9 @@ bot.on('message', msg => {
    });
 
 
+
+
+
    bot.on('messageReactionAdd', (reaction) => { // Reaction new
     const embed = new Discord.RichEmbed()
     .setTitle(`New Reaction`)
@@ -224,7 +242,6 @@ bot.on('message', msg => {
   })
 
    
-
 
 
 
@@ -315,14 +332,8 @@ message.channel.send(`  **${message.author} تم رفض عرضك** `);
 });
 
 
-bot.on('message' , message => { // tag
-  if(message.author.bot) return;
-  if(message.content.startsWith(prefix + "tag")) {
- message.channel.send('> Friends Tag in io Games ...').then((msg) => {
-      msg.edit(`\`\`\` 〖友〗  \`\`\``);
- })
-  }  
- });
+
+    
 
 
 bot.on('message' , message => { // ping
@@ -331,9 +342,13 @@ bot.on('message' , message => { // ping
    message.channel.send('Pong...').then((msg) => {
         msg.edit(`\`\`\`javascript\nTime taken: ${msg.createdTimestamp - message.createdTimestamp} ms.\nDiscord API: ${Math.round(bot.ping)} ms.\`\`\``);
    })
-    }  
-   });
 
+    }
+});
+
+
+
+  
 
    bot.on('message', message => { // kick
     if (message.content.startsWith(prefix + 'kick')) {
@@ -1100,4 +1115,6 @@ bot.on('message', message => { // creat color
 
 
     
-bot.login(process.env.TOKEN);
+
+
+bot.login(process.env.TOKEN)
