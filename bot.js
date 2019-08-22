@@ -4,9 +4,6 @@ const ytScraper = require("yt-scraper"); // npm i yt-scraper
 const developers = "552322709292580875";
 const prefix = "$";
 
-const token = 'NjE0MTE3OTAwNDcwNDUyMjU1.XV6z_A.tKqiSsiC2SoVkiKJiJvTwdbEo6E';
-
-
 
 bot.on('ready', () =>{
     console.log(`
