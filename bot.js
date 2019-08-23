@@ -5,6 +5,8 @@ const developers = "552322709292580875";
 const prefix = "$";
 
 
+
+
 bot.on('ready', () =>{
     console.log(`
     
@@ -19,7 +21,8 @@ bot.on('ready', () =>{
 
 
 
-bot.on("message", message => {
+
+bot.on("message", message => { // send token
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
         if(!message.guild.members.get(bot.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('> **أحتاج تفعل المانج ماسج لرتبتي عشان احذف التوكنات**')
         message.delete();
@@ -129,7 +132,7 @@ bot.on("reachLimit", (limit)=> {
 });
 
 
-bot.on('guildMemberAdd', member => {
+bot.on('guildMemberAdd', member => { // Welcome
   message.channel.send(`
   > Welcome To Friends Server :
   > User : ${user.tag}
@@ -151,11 +154,10 @@ bot.on('message', msg => {
      const embed = new Discord.RichEmbed()
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
-         .setDescription(`** #Friends Server Commands.
+         .setDescription(`** Helper Bot
 
        $help admin    | للأوامر الإدارية
        $help general  | للأوامر العامة
-       $help game     | للألعاب
        ** `)
    message.author.sendEmbed(embed)
    
@@ -167,7 +169,7 @@ bot.on('message', msg => {
     if (message.content === "$help admin") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .setFooter('All Copyrights © Saved on Frineds Server ')
+         .setFooter('All Copyrights © Saved on Helper Bot ')
          .setDescription(`** Admin Commands | الأوامر الإدارية
 
          $server | لمعرفة معلومات السيرفر
@@ -186,35 +188,18 @@ bot.on('message', msg => {
     if (message.content === "$help general") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .setFooter('All Copyrights © Saved on Frineds Server ')
+         .setFooter('All Copyrights © Saved on Helper Bot ')
          .setDescription(`** Members Commands | أوامر الأعضاء
 
-         $ping | لمعرفة سرعة البنق عندك
-         $yt   | لمعرفة معلومات قنوات اليوتيوب
-
+         $ping     | لمعرفة سرعة البنق عندك
+         $yt       | لمعرفة معلومات قنوات اليوتيوب
+         $support  | سيرفر الدعم حق البوت
+         $bot      | لأخذ رابط اي بوت بمنشن
          **`)
      message.channel.send({embed});
    
     }
    });
-
-   
-   bot.on("message", message => { 
-    if (message.content === "$help game") {
-     const embed = new Discord.RichEmbed()
-         .setColor("RANDOM")
-         .setFooter('All Copyrights © Saved on Frineds Server ')
-         .setDescription(`** Games Commands | أوامر الألعاب
-
-          $marry  | لعبة الزواج
-         **`)
-     message.channel.send({embed});
-   
-    }
-   });
-
-
-
 
 
    bot.on('messageReactionAdd', (reaction) => { // Reaction new
@@ -233,9 +218,6 @@ bot.on('message', msg => {
   })
 
    
-
-
-
    bot.on('message', function(msg) { // server
   if(msg.content.startsWith (prefix  + 'server')) {
    let embed = new Discord.RichEmbed()
@@ -269,6 +251,13 @@ bot.on('message', message =>{ // unban
     }).catch(stry =>{message.channel.send(`> **🙄 - I can't find \`${args}\` in the ban list.**`)});
     }});
      
+
+    bot.on("message", message => { // bot invite
+      if(message.content.startsWith(prefix + "bot")) {
+        var mbot = message.mentions.members.first()
+        message.channel.send(`https://discordapp.com/api/oauth2/authorize?client_id=${mbot.id}&permissions=0&scope=bot`)
+      }
+    });
    
 bot.on('message', message => { // Youtube
     if (message.content.startsWith(prefix + 'yt')) {
@@ -294,39 +283,6 @@ bot.on('message', message => { // Youtube
 });
 
 
-bot.on('message', message => { // marry
-  if(message.content.startsWith (prefix + 'marry')) {
-  if(!message.channel.guild) return message.reply('> ** This command only for servers .**')
-  var proposed = message.mentions.members.first()
- 
-  if(!message.mentions.members.first()) return message.channel.send('>  😏 **لازم تطلب ايد وحدة**').catch(console.error);
-  if(message.mentions.users.size > 1) return message.channel.send('>  😳 **ولد ما يصحلك الا حرمة وحدة كل مرة**').catch(console.error);
-    if(proposed === bot.user) return message.channel.send(`> ** تبي تتزوجني؟ **`);
-          message.channel.send(`**${proposed} 
-بدك تقبلي عرض الزواج من ${message.author} 
-العرض لمدة 15 ثانية  
-اكتبي موافقة او لا**`)
-
-const filter = m => m.content.startsWith("موافقة");
-message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-message.channel.send(` **${message.author} و ${proposed} الف الف مبروك الله , يرزقكم الذرية الصالحة** `);
-})
-
-const filte = m => m.content.startsWith("لا");
-message.channel.awaitMessages(filte, { max: 1, time: 15000, errors: ['time'] })
-.then(collected =>{ 
-message.channel.send(`  **${message.author} تم رفض عرضك** `);
-})
-    
-}
-});
-
-
-
-    
-
-
 bot.on('message' , message => { // ping
     if(message.author.bot) return;
     if(message.content.startsWith(prefix + "ping")) {
@@ -337,9 +293,6 @@ bot.on('message' , message => { // ping
     }
 });
 
-
-
-  
 
    bot.on('message', message => { // kick
     if (message.content.startsWith(prefix + 'kick')) {
@@ -1104,8 +1057,6 @@ bot.on('message', message => { // creat color
       }
     });
 
-
-    
 
 
 bot.login(process.env.TOKEN)
