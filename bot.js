@@ -238,6 +238,12 @@ bot.on('message', msg => {
   });
 
 
+bot.on('message', message => {
+	if (message.content === '$support') {
+		message.channel.send('> https://discord.gg/ez2UqCB .');
+	}
+});
+
 bot.on('message', message =>{ // unban
     let command = message.content.split(" ")[0];
     if (command == prefix + "unban") {
