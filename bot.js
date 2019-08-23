@@ -176,6 +176,7 @@ bot.on('message', msg => {
          $kick   | الطرد
          $ban    | الباند
          $unban  | فك الباند بالآي دي
+         $cColor | لإنشاء 137 لون
          $nick   | تغير النك نيم
          **`)
      message.channel.send({embed});
