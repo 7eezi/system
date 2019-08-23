@@ -295,7 +295,7 @@ bot.on('message', message => {
     if (message.content.startsWith(prefix + 'clear')) { 
     if(!message.channel.guild) return message.reply(`> ** This Command For Servers Only**`); 
      if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send(`> ** You don't have Premissions!**`);
-     if(!message.guild.member(client.user).hasPermission('MANAGE_GUILD')) return message.channel.send(`> **I don't have Permission!**`);
+     if(!message.guild.member(bot.user).hasPermission('MANAGE_GUILD')) return message.channel.send(`> **I don't have Permission!**`);
     let args = message.content.split(" ").slice(1)
     let messagecount = parseInt(args);
     if (args > 100) return message.reply(`> ** The number can't be more than **100** .**`).then(messages => messages.delete(5000))
