@@ -199,7 +199,7 @@ bot.on('message', msg => {
          $support  | سيرفر الدعم حق البوت
          $bot      | لأخذ رابط اي بوت بمنشن
          $level    | لمعرفة مستواك
-         $
+         $killEx   | يعطيك 10 اكس بي
          **`)
      message.channel.send({embed});
    
