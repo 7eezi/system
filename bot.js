@@ -146,7 +146,7 @@ bot.on('guildMemberAdd', member => { // Welcome
 
 bot.on('message', msg => {
     if(msg.content === '$help')
-    msg.channel.send('> **__ Check Your DM :white_check_mark:.__**')
+    msg.channel.send('> **Check Your DM :white_check_mark:.**')
   });
  
  
