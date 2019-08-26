@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const fs = require('fs');
 const ytScraper = require("yt-scraper"); // npm i yt-scraper
 const developers = "552322709292580875";
 const prefix = "$";
@@ -197,6 +198,8 @@ bot.on('message', msg => {
          $yt       | لمعرفة معلومات قنوات اليوتيوب
          $support  | سيرفر الدعم حق البوت
          $bot      | لأخذ رابط اي بوت بمنشن
+         $level    | لمعرفة مستواك
+         $
          **`)
      message.channel.send({embed});
    
@@ -373,7 +376,7 @@ bot.on("message", msg => {
 	
 	
 	console.log("Example")
-	if (msg.content.startsWith(prefix + "killExample")) {
+	if (msg.content.startsWith(prefix + "killEx")) {
 		userData.XP += 10
         msg.channel.sendMessage(`
         - ${msg.author} has killed an Example!
