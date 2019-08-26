@@ -180,6 +180,7 @@ bot.on('message', msg => {
          $cColor | لإنشاء 137 لون
          $nick   | تغير النك نيم
          $clear  | لمسح الشات
+         $create |لإنشاء روم
          **`)
      message.channel.send({embed});
    
@@ -243,6 +244,20 @@ bot.on('message', msg => {
    msg.channel.send({embed:embed});
   }
   });
+
+
+bot.on('message', async(message) => {
+    if(message.author.julian || message.channel.type == 'dm') return;
+    let args = message.content.split(' ');
+    if(args[0] == `${prefix}create`){
+        if(!message.member.hasPermission('MANAGE_CHANNELS') || !message.guild.me.hasPermission('MANAGE_CHANNELS')) return;
+        let types = ['text', 'voice', 'category']
+        if(!args[1] || !args[2]) return message.channel.send(`> **Usage:** ${prefix}create < text | voice | category > [name]`);
+        if(!types.includes(args[1].toLowerCase())) return message.channel.send(`The channel type must be: text, voice or category!`);
+        let ch = await message.guild.createChannel(args.slice(2).join(' '), { type: args[1].toLowerCase() });
+        await message.channel.send(`> Sucessfully created **${ch.name}** channel.`);
+    }
+});
 
 
 bot.on('message', message => {
