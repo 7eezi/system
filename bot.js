@@ -200,6 +200,7 @@ bot.on('message', msg => {
          $bot      | لأخذ رابط اي بوت بمنشن
          $level    | لمعرفة مستواك
          $killEx   | يعطيك 10 اكس بي
+         $info     | معلومات البوت
          **`)
      message.channel.send({embed});
    
@@ -388,6 +389,19 @@ bot.on("message", msg => {
 	
 });
 
+
+
+bot.on('message', message => {
+    if(message.content.startsWith(prefix + 'info')) {
+    var ping = `${Date.now() - message.createdTimestamp}`
+    let info = new Discord.RichEmbed()
+    .setColor('BLUE')
+    .setAuthor(`${bot.user.tag} info`, bot.user.avatarURL)
+    .setDescription(`**Bot ping: \`${ping}\`\n\nServers Size: \`${bot.guilds.size}\`\n
+    Bot Prefix: \`${prefix}\`\n\nBot Owner: <@552322709292580875>**`)
+    message.channel.send(info)
+    }
+    });
 
 
   bot.on('message',message =>{ // nick
