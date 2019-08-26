@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const fs = require('fs');
-const ytScraper = require("yt-scraper"); // npm i yt-scraper
+const ytScraper = require("yt-scraper"); 
 const developers = "552322709292580875";
 const prefix = "$";
 
@@ -133,7 +133,7 @@ bot.on("reachLimit", (limit)=> {
 });
 
 
-bot.on('guildMemberAdd', member => { // Welcome
+bot.on('guildMemberAdd', member => {
   message.channel.send(`
   > Welcome To Friends Server :
   > User : ${user.tag}
@@ -180,7 +180,7 @@ bot.on('message', msg => {
          $cColor | لإنشاء 137 لون
          $nick   | تغير النك نيم
          $clear  | لمسح الشات
-         $create |لإنشاء روم
+         $create | لإنشاء روم
          **`)
      message.channel.send({embed});
    
