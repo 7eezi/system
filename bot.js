@@ -199,8 +199,6 @@ bot.on('message', msg => {
          $yt       | لمعرفة معلومات قنوات اليوتيوب
          $support  | سيرفر الدعم حق البوت
          $bot      | لأخذ رابط اي بوت بمنشن
-         $level    | لمعرفة مستواك
-         $killEx   | يعطيك 10 اكس بي
          $info     | معلومات البوت
          **`)
      message.channel.send({embed});
@@ -363,48 +361,7 @@ bot.on('message' , message => { // ping
   })
 
 
-  let XP = JSON.parse(fs.readFileSync('./XP.json', 'utf8'));
-
-bot.on("message", msg => {	
-	console.log(0)
-	if(!msg.content.startsWith(prefix)) return;
-	
-	let userData = XP[msg.author.id];
-	if (!userData) userData = {XP: 0, level: 0};
-	
-	let userXP = XP[msg.author.id] ? XP[msg.author.id].XP : 0;
-	let curLevel = Math.floor(0.1 * Math.sqrt(userXP));
-	if (curLevel > userData.level) {
-		userData.level = curLevel;
-        msg.reply(`
-        - Level up to **${curLevel}**!
-        `);
-	}
-	
-	console.log("level")
-	if (msg.content.startsWith(prefix + "level")) {
-        msg.reply(`
-        - ur Level ${userData.level} , with ${userData.XP} XP Right Now.
-        `);
-	}
-	
-	if (!XP[msg.author.id]) XP[msg.author.id] = {XP: 0, level: 0}
-	
-	
-	
-	console.log("Example")
-	if (msg.content.startsWith(prefix + "killEx")) {
-		userData.XP += 10
-        msg.channel.sendMessage(`
-        - ${msg.author} has killed an Example!
-        `)
-	}
-	
-	console.log(XP)
-	fs.writeFile('./XP.json', JSON.stringify(XP), console.error);
-	
-});
-
+  
 
 
 bot.on('message', message => {
