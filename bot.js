@@ -25,15 +25,15 @@ bot.on('ready', () =>{
 
 bot.on("message", message => { // send token
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
-        if(!message.guild.members.get(bot.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('> **أحتاج تفعل المانج ماسج لرتبتي عشان احذف التوكنات**')
+        if(!message.guild.members.get(bot.user.id).hasPermission('MANAGE_MESSAGES')) return message.channel.send('> **i need MANAGE_MESSAGE to clear tokens**')
         message.delete();
-        message.reply(`أرسلت توكنك بالغلط؟ , لاتخاف حذفناه`);
+        message.reply(`You send ur token? aa don't worry i delete it`);
         return;
     }
                               if(message.channel.type === "dm"){
     if (message.content.match(/([A-Z0-9]|-|_){24}\.([A-Z0-9]|-|_){6}\.([A-Z0-9]|-|_){27}|mfa\.([A-Z0-9]|-|_){84}/gi)) {
         message.delete();
-        message.reply(`أرسلت توكنك بالغلط؟ , لاتخاف حذفناه`);
+        message.reply(`You send ur token? aa don't worry i delete it`);
         return;
     }
 }
@@ -155,7 +155,7 @@ bot.on('message', msg => {
      const embed = new Discord.RichEmbed()
          .setColor("#00FF00")
          .setThumbnail(message.author.avatarURL)
-         .setDescription(`** Helper Bot
+         .setDescription(`**© WonderfulCloud
 
        $help admin    | للأوامر الإدارية
        $help general  | للأوامر العامة
@@ -170,7 +170,7 @@ bot.on('message', msg => {
     if (message.content === "$help admin") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .setFooter('All Copyrights © Saved on Helper Bot ')
+         .setFooter('All Copyrights © Saved on WonderfulCloud ')
          .setDescription(`** Admin Commands | الأوامر الإدارية
 
          $server | لمعرفة معلومات السيرفر
@@ -192,7 +192,7 @@ bot.on('message', msg => {
     if (message.content === "$help general") {
      const embed = new Discord.RichEmbed()
          .setColor("RANDOM")
-         .setFooter('All Copyrights © Saved on Helper Bot ')
+         .setFooter('All Copyrights © Saved on WonderfulCloud ')
          .setDescription(`** Members Commands | أوامر الأعضاء
 
          $ping     | لمعرفة سرعة البنق عندك
@@ -229,16 +229,16 @@ bot.on('message', msg => {
    .setColor('RANDOM')
    .setThumbnail(msg.guild.iconURL)
    .setTitle(`Showing Details Of  **${msg.guild.name}**`)
-   .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
-   .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
-   .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
-   .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
-   .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
-   .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
-   .addField(':shield:**__مستوى حماية السيرفر__**', `${msg.guild.verificationLevel}`, true)
-   .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
-   .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
-   .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+   .addField('🌐**Server Region**',`[** __${msg.guild.region}__ **]`,true)
+   .addField('🏅**Roles**',`[** __${msg.guild.roles.size}__ **]`,true)
+   .addField('🔴**Memebers Number**',`[** __${msg.guild.memberCount}__ **]`,true)
+   .addField('🔵**Online Members**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+   .addField('📝**Writes Rooms**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+   .addField('🎤**Voices Rooms**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+   .addField(':shield:**Server protection level**', `${msg.guild.verificationLevel}`, true)
+   .addField('👑**Ownership**',`**${msg.guild.owner}**`,true)
+   .addField('🆔**Server ID**',`**${msg.guild.id}**`,true)
+   .addField('📅**Server Created on**',msg.guild.createdAt.toLocaleString())
    msg.channel.send({embed:embed});
   }
   });
@@ -260,7 +260,7 @@ bot.on('message', async(message) => {
 
 bot.on('message', message => {
 	if (message.content === '$support') {
-		message.channel.send('> https://discord.gg/ez2UqCB .');
+		message.channel.send('> https://discord.gg/4gRDgMN .');
 	}
 });
 
