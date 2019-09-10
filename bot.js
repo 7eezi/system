@@ -181,6 +181,7 @@ bot.on('message', msg => {
          $nick   | تغير النك نيم
          $clear  | لمسح الشات
          $create | لإنشاء روم
+         $mute   | ميوت مع تحديد الوقت
          **`)
      message.channel.send({embed});
    
