@@ -264,6 +264,37 @@ bot.on('message', message => {
 	}
 });
 
+
+bot.on("message", message => {
+    if (message.content.startsWith(prefix + "WonderfulObc")) {
+                 if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+  let args = message.content.split(" ").slice(1);
+  var argresult = args.join(' ');
+  message.guild.members.filter(m => m.presence.status !== 'all').forEach(m => {
+  m.send(`${argresult}\n ${m}`);
+  })
+  message.channel.send(`\`${message.guild.members.filter( m => m.presence.status !== 'all').size}\`:mailbox:  عدد المستلمين `);
+  message.delete();
+  };
+  });
+
+
+
+  bot.on("message", message => {
+  
+              if (message.content.startsWith(prefix + "WonderfulBc")) {
+                           if (!message.member.hasPermission("ADMINISTRATOR"))  return;
+    let args = message.content.split(" ").slice(1);
+    var argresult = args.join(' '); 
+    message.guild.members.filter(m => m.presence.status !== 'offline').forEach(m => {
+   m.send(`${argresult}\n ${m}`);
+  })
+   message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` :mailbox:  عدد المستلمين `); 
+   message.delete(); 
+  };     
+  });
+
+
 bot.on('message', message =>{ // unban
     let command = message.content.split(" ")[0];
     if (command == prefix + "unban") {
